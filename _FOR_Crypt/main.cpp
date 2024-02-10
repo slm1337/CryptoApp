@@ -11,6 +11,9 @@
 using namespace std;
 
 class EncryptionStrategy {
+protected:
+    const wstring alphabet = L"אבגדהו¸זחטיךכלםמןנסעףפץצקרשתûü‎‏ÿ ,.!?-:\"–";
+
 public:
     virtual wstring encrypt(const wstring& text) const = 0;
     virtual wstring decrypt(const wstring& text) const = 0;
@@ -18,9 +21,6 @@ public:
 };
 
 class CaesarCipher : public EncryptionStrategy {
-private:
-    const wstring alphabet = L"אבגדהו¸זחטיךכלםמןנסעףפץצקרשתûü‎‏ÿ ,.!?-:\"–";
-
 public:
     wstring encrypt(const wstring& text) const override {
         return shift(text, 3);
@@ -47,9 +47,6 @@ private:
 };
 
 class TrithemiusCipher : public EncryptionStrategy {
-private:
-    const wstring alphabet = L"אבגדהו¸זחטיךכלםמןנסעףפץצקרשתûü‎‏ÿ ,.!?-:\"–";
-
 public:
     wstring encrypt(const wstring& text) const override {
         return shift(text, true);
@@ -93,7 +90,6 @@ private:
 
 class VigenereCipher : public EncryptionStrategy {
 private:
-    const wstring alphabet = L"אבגדהו¸זחטיךכלםמןנסעףפץצקרשתûü‎‏ÿ ,.!?-:\"–";
     const wstring key;
 
 public:
