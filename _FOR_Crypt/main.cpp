@@ -12,9 +12,17 @@ using namespace std;
 
 class EncryptionStrategy {
 protected:
-    const wstring alphabet = L"אבגדהו¸זחטיךכלםמןנסעףפץצקרשתûü‎‏ÿ ,.!?-:\"–";
+    wstring alphabet = L"אבגדהו¸זחטיךכלםמןנסעףפץצקרשתûü‎‏ÿ ,.!?-:\"–";
 
 public:
+    const wstring& getAlphabet() const {
+        return alphabet;
+    }
+
+    void setAlphabet(const wstring& newAlphabet) {
+        alphabet = newAlphabet;
+    }
+
     virtual wstring encrypt(const wstring& text) const = 0;
     virtual wstring decrypt(const wstring& text) const = 0;
     virtual ~EncryptionStrategy() = default;
